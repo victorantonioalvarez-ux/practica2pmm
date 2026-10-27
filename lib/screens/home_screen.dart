@@ -7,11 +7,11 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("DevProfile M3")),
-      body: _createCard(),
+      body: _createCard(context),
       );
   }
 
-  Widget _createCard(){
+  Widget _createCard(BuildContext context){
     return Card(
       elevation: 10,
       child: Column(
@@ -22,6 +22,14 @@ class HomeScreen extends StatelessWidget {
               subtitle: Text("Email"),
               trailing: Text("Birthrate"),
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                FloatingActionButton(onPressed: (){
+                  Navigator.pushNamed(context, "/edit");
+                }, child: const Text("Editar"))
+              ],
+            )
         ]
       )
     );

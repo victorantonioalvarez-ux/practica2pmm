@@ -9,7 +9,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Practica2',
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      initialRoute: "/",
+      routes: {
+        "/": (context) => HomeScreen(),
+        //"/edit": (context) => PersonalScreen(),
+        //"/widgets": (context) => WidgetScreen(),
+      },
     );
   }
 }
