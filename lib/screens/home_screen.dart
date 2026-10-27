@@ -25,9 +25,14 @@ class HomeScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                FloatingActionButton(onPressed: (){
+                ElevatedButton(onPressed: (){
                   Navigator.pushNamed(context, "/edit");
-                }, child: const Text("Editar"))
+                }, child: const Text("Edit Profile")),
+                SizedBox(width: 12,),
+                ElevatedButton(onPressed: (){
+                  Navigator.pushNamed(context, "/widgets");
+                }, child: const Text("Explore Widget Showcase")),
+
               ],
             )
         ]
