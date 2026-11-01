@@ -19,11 +19,18 @@ class _HomeScreenState extends State<HomeScreen> {
     birthdate: DateTime(1999, 10, 19),
   );
 
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("DevProfile M3")),
-      body: _createCard(context),
+      body: ListView(
+        padding: EdgeInsets.all(16),
+        children: [
+          _createCard(context),
+        ],
+      ),
       );
   }
 
@@ -40,6 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
+              
               children: [
                 ElevatedButton(onPressed: (){
                   Navigator.pushNamed(context, "/edit");
@@ -50,7 +58,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 }, child: const Text("Explore Widget Showcase")),
 
               ],
-            )
+              
+            ),
+            const SizedBox(height: 15,)
         ]
       )
     );
