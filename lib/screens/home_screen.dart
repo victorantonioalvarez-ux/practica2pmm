@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practica2pmm/models/persona.dart';
 
 // Usamos StatefulWidget para poder actualizar la pantalla cuando se edite el perfil
 
@@ -10,6 +11,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  Persona _persona = Persona(
+    firstName: "Víctor",
+    lastName: "Álvarez",
+    email: "vac@gmail.com",
+    password: "1234",
+    birthdate: DateTime(1999, 10, 19),
+  );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,9 +34,9 @@ class _HomeScreenState extends State<HomeScreen> {
         children:[
             ListTile(
               leading: Icon(Icons.man, color: Colors.deepPurple,),
-              title: Text("Full name"),
-              subtitle: Text("Email"),
-              trailing: Text("Birthdate"),
+              title: Text(_persona.fullName),
+              subtitle: Text(_persona.email),
+              trailing: Text(_persona.birthdateFormatted),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
