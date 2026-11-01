@@ -12,6 +12,22 @@ class PersonalScreen extends StatefulWidget {
 }
 
 class _PersonalScreenState extends State<PersonalScreen> {
+  final TextEditingController _firstNameController = TextEditingController();
+  final TextEditingController _lastNameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _birthdateController = TextEditingController();
+
+  @override
+  void dispose() {
+    _firstNameController.dispose();
+    _lastNameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    _birthdateController.dispose();
+    super.dispose();
+  }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +40,7 @@ class _PersonalScreenState extends State<PersonalScreen> {
 
             TextField(
             textCapitalization: TextCapitalization.words,
+            controller: _firstNameController,
             decoration: const InputDecoration(
               labelText: 'FirstName',
               border: OutlineInputBorder(),
@@ -33,6 +50,7 @@ class _PersonalScreenState extends State<PersonalScreen> {
             const SizedBox(height: 16),
             TextField(
               textCapitalization: TextCapitalization.words,
+              controller: _lastNameController,
               decoration: const InputDecoration(
                 labelText: 'LastName',
                 border: OutlineInputBorder(),
@@ -41,7 +59,7 @@ class _PersonalScreenState extends State<PersonalScreen> {
 
             const SizedBox(height: 16),
             TextField(
-              keyboardType: TextInputType.emailAddress,
+              controller: _emailController,
               decoration: const InputDecoration(
                 labelText: 'Email',
                 border: OutlineInputBorder(),
@@ -50,7 +68,17 @@ class _PersonalScreenState extends State<PersonalScreen> {
 
             const SizedBox(height: 16),
             TextField(
-              keyboardType: TextInputType.datetime,
+              controller: _passwordController,
+              obscureText: true,
+              decoration: const InputDecoration(
+                labelText: 'Password',
+                border: OutlineInputBorder(),
+              ),
+            ),
+
+            const SizedBox(height: 16),
+            TextField(
+              controller: _birthdateController,
               decoration: const InputDecoration(
                 labelText: 'Birthdate',
                 border: OutlineInputBorder(),
