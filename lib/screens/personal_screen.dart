@@ -3,6 +3,7 @@ import 'package:practica2pmm/models/persona.dart';
 
 // Usamos StatefulWidget porque guardamos el estado de los campos de texto
 // y queremos que se actualicen cuando se edite el perfil
+
 class PersonalScreen extends StatefulWidget {
   const PersonalScreen({super.key});
 

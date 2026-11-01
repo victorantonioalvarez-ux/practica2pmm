@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+// Usamos StatefulWidget porque necesitamos actualizar la lista cuando se reordena un elemento
+
 class FruitReorderableListView extends StatefulWidget {
   const FruitReorderableListView({super.key});
 
