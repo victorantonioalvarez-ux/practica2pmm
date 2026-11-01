@@ -18,6 +18,8 @@ class _PersonalScreenState extends State<PersonalScreen> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _birthdateController = TextEditingController();
 
+  DateTime _birthdate = DateTime.now();
+
   @override
   void dispose() {
     _firstNameController.dispose();
@@ -28,6 +30,22 @@ class _PersonalScreenState extends State<PersonalScreen> {
     super.dispose();
   }
   
+  void _pickDate(){
+    showDatePicker(
+      context:context,
+      initialDate: _birthdate,
+      firstDate: DateTime(1900),
+      lastDate: DateTime.now(),
+    ).then((picked){
+      if ( picked != null) {
+        setState((){
+          _birthdate = picked;
+          _birthdateController.text = 
+            "${picked.year}-${picked.month.toString().padLeft(2,"0")}-${picked.day.toString().padLeft(2,"0")}";
+        });
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,6 +97,8 @@ class _PersonalScreenState extends State<PersonalScreen> {
             const SizedBox(height: 16),
             TextField(
               controller: _birthdateController,
+              readOnly: true,
+              onTap: _pickDate,
               decoration: const InputDecoration(
                 labelText: 'Birthdate',
                 border: OutlineInputBorder(),
