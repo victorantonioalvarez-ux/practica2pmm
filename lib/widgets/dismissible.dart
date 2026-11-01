@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 // Uso StatefulWidget para poder actualizar la lista cuando se elimina un elemento
- 
+
 class DismissibleList extends StatefulWidget {
   const DismissibleList({super.key});
 
@@ -19,7 +19,7 @@ class _DismissibleListState extends State<DismissibleList> {
   ];
 
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return ListView.builder(
       itemCount: _games.length,
       itemBuilder: (context, index) {
@@ -30,15 +30,14 @@ class _DismissibleListState extends State<DismissibleList> {
             color: Colors.purple,
             child: const Icon(Icons.delete, color: Colors.white),
           ),
-            onDismissed: (direction){
-              setState(() {
-                _games.removeAt(index);
-              });
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text("$game eliminado"))
-              );
-            },
-            child: ListTile(
+          onDismissed: (direction) {
+            setState(() {
+              _games.removeAt(index);
+            });
+            ScaffoldMessenger.of(context)
+                .showSnackBar(SnackBar(content: Text("$game eliminado")));
+          },
+          child: ListTile(
             leading: const Icon(Icons.check_circle_outline),
             title: Text(game),
           ),

@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 
 class FruitReorderableListView extends StatefulWidget {
   const FruitReorderableListView({super.key});
- 
+
   @override
-  State<FruitReorderableListView> createState() => _FruitReorderableListViewState();
+  State<FruitReorderableListView> createState() =>
+      _FruitReorderableListViewState();
 }
- 
+
 class _FruitReorderableListViewState extends State<FruitReorderableListView> {
   final List<String> _fruits = [
     "Manzanas",
@@ -15,7 +16,7 @@ class _FruitReorderableListViewState extends State<FruitReorderableListView> {
     "Naranjas",
     "Fresas",
   ];
- 
+
   @override
   Widget build(BuildContext context) {
     return ReorderableListView.builder(
@@ -38,4 +39,3 @@ class _FruitReorderableListViewState extends State<FruitReorderableListView> {
     );
   }
 }
-

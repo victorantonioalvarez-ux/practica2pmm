@@ -13,7 +13,6 @@ class Persona {
     required this.birthdate,
   });
 
-
   String get birthdateFormatted {
     String year = birthdate.year.toString();
     String month = birthdate.month.toString().padLeft(2, "0");

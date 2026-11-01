@@ -6,7 +6,6 @@ import 'package:practica2pmm/models/persona.dart';
 class PersonalScreen extends StatefulWidget {
   const PersonalScreen({super.key});
 
-
   @override
   State<PersonalScreen> createState() => _PersonalScreenState();
 }
@@ -33,32 +32,32 @@ class _PersonalScreenState extends State<PersonalScreen> {
     _birthdateController.dispose();
     super.dispose();
   }
-  
-  void _pickDate(){
+
+  void _pickDate() {
     showDatePicker(
-      context:context,
+      context: context,
       initialDate: _birthdate,
       firstDate: DateTime(1900),
       lastDate: DateTime.now(),
-    ).then((picked){
-      if ( picked != null) {
-        setState((){
+    ).then((picked) {
+      if (picked != null) {
+        setState(() {
           _birthdate = picked;
-          _birthdateController.text = 
-            "${picked.year}-${picked.month.toString().padLeft(2,"0")}-${picked.day.toString().padLeft(2,"0")}";
+          _birthdateController.text =
+              "${picked.year}-${picked.month.toString().padLeft(2, "0")}-${picked.day.toString().padLeft(2, "0")}";
         });
       }
     });
   }
 
-  void _save(){
-        if (_firstNameController.text.trim().isEmpty ||
+  void _save() {
+    if (_firstNameController.text.trim().isEmpty ||
         _lastNameController.text.trim().isEmpty ||
         _emailController.text.trim().isEmpty ||
         _passwordController.text.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Rellena todos los campos")),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text("Rellena todos los campos")));
       return;
     }
 
@@ -86,19 +85,18 @@ class _PersonalScreenState extends State<PersonalScreen> {
     }
 
     return Scaffold(
-      appBar:AppBar(title: const Text ("Álvarez -Editar perfil")),
+      appBar: AppBar(title: const Text("Álvarez -Editar perfil")),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-
             TextField(
-            textCapitalization: TextCapitalization.words,
-            controller: _firstNameController,
-            decoration: const InputDecoration(
-              labelText: 'FirstName',
-              border: OutlineInputBorder(),
-            ),
+              textCapitalization: TextCapitalization.words,
+              controller: _firstNameController,
+              decoration: const InputDecoration(
+                labelText: 'FirstName',
+                border: OutlineInputBorder(),
+              ),
             ),
 
             const SizedBox(height: 16),
@@ -146,11 +144,10 @@ class _PersonalScreenState extends State<PersonalScreen> {
             ElevatedButton(
               onPressed: _save,
               child: const Text('Save and Return'),
-            )
+            ),
           ],
-        )
-      )
+        ),
+      ),
     );
-    
   }
 }
