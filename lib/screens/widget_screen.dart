@@ -23,7 +23,7 @@ class WidgetScreen extends StatelessWidget {
             padding: EdgeInsets.all(12),
             child: Text("ReorderableListView: arrastra para reordenar")
           ),
-          Expanded(child: ReorderableListView())]
+          Expanded(child: FruitReorderableListView())]
       ),
     );
   }
