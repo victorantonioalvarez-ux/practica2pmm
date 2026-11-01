@@ -19,22 +19,35 @@ class _HomeScreenState extends State<HomeScreen> {
     birthdate: DateTime(1999, 10, 19),
   );
 
+    void _editProfile() {
+    Navigator.pushNamed<Persona>(
+      context,
+      "/edit",
+      arguments: _persona,
+    ).then((updated) {
+      if (updated != null) {
+        setState(() {
+          _persona = updated;
+        });
+      }
+    });
+  }
 
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("DevProfile M3")),
+      appBar: AppBar(title: const Text("DevProfile M3")),
       body: ListView(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         children: [
-          _createCard(context),
+          _createCard(),
         ],
       ),
       );
   }
 
-  Widget _createCard(BuildContext context){
+  Widget _createCard(){
     return Card(
       elevation: 10,
       child: Column(
@@ -49,10 +62,10 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               
               children: [
-                ElevatedButton(onPressed: (){
-                  Navigator.pushNamed(context, "/edit");
-                }, child: const Text("Edit Profile")),
-                SizedBox(width: 12,),
+                ElevatedButton(
+                  onPressed: _editProfile, 
+                  child: const Text("Edit Profile")),
+                const SizedBox(width: 12,),
                 ElevatedButton(onPressed: (){
                   Navigator.pushNamed(context, "/widgets");
                 }, child: const Text("Explore Widget Showcase")),
