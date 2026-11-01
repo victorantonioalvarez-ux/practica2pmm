@@ -10,37 +10,37 @@ class DismissibleList extends StatefulWidget {
 }
 
 class _DismissibleListState extends State<DismissibleList> {
-  final List<String> _tasks = [
-    "Tarea 1",
-    "Tarea 2",
-    "Tarea 3",
-    "Tarea 4",
-    "Tarea 5",
+  final List<String> _games = [
+    "Caves of Qud",
+    "S.T.A.L.K.E.R.",
+    "Hollow Knight",
+    "Dwarf Fortress",
+    "The Witcher 3",
   ];
 
   @override
   Widget build(BuildContext context){
     return ListView.builder(
-      itemCount: _tasks.length,
+      itemCount: _games.length,
       itemBuilder: (context, index) {
-        final task = _tasks[index];
+        final game = _games[index];
         return Dismissible(
-          key: Key(task),
+          key: Key(game),
           background: Container(
             color: Colors.purple,
             child: const Icon(Icons.delete, color: Colors.white),
           ),
             onDismissed: (direction){
               setState(() {
-                _tasks.removeAt(index);
+                _games.removeAt(index);
               });
               ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text("$task eliminado"))
+                SnackBar(content: Text("$game eliminado"))
               );
             },
             child: ListTile(
             leading: const Icon(Icons.check_circle_outline),
-            title: Text(task),
+            title: Text(game),
           ),
         );
       },
