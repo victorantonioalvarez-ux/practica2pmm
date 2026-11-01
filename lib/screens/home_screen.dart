@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
-  HomeScreen({super.key});
+// Usamos StatefulWidget para poder actualizar la pantalla cuando se edite el perfil
 
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +27,7 @@ class HomeScreen extends StatelessWidget {
               leading: Icon(Icons.man, color: Colors.deepPurple,),
               title: Text("Full name"),
               subtitle: Text("Email"),
-              trailing: Text("Birthrate"),
+              trailing: Text("Birthdate"),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
