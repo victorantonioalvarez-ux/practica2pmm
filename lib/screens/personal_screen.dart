@@ -22,6 +22,8 @@ class _PersonalScreenState extends State<PersonalScreen> {
 
   late Persona _persona;
 
+  bool _loaded = false;
+
   @override
   void dispose() {
     _firstNameController.dispose();
@@ -71,8 +73,20 @@ class _PersonalScreenState extends State<PersonalScreen> {
 
   @override
   Widget build(BuildContext context) {
+    if (!_loaded) {
+      _persona = ModalRoute.of(context)!.settings.arguments as Persona;
+      _firstNameController.text = _persona.firstName;
+      _lastNameController.text = _persona.lastName;
+      _emailController.text = _persona.email;
+      _passwordController.text = _persona.password;
+      _birthdate = _persona.birthdate;
+      _birthdateController.text =
+          "${_birthdate.year}-${_birthdate.month.toString().padLeft(2, "0")}-${_birthdate.day.toString().padLeft(2, "0")}";
+      _loaded = true;
+    }
+
     return Scaffold(
-      appBar:AppBar(title: const Text ("Editar perfil")),
+      appBar:AppBar(title: const Text ("Álvarez -Editar perfil")),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -100,6 +114,7 @@ class _PersonalScreenState extends State<PersonalScreen> {
             const SizedBox(height: 16),
             TextField(
               controller: _emailController,
+              keyboardType: TextInputType.emailAddress,
               decoration: const InputDecoration(
                 labelText: 'Email',
                 border: OutlineInputBorder(),
