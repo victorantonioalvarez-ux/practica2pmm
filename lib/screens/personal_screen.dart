@@ -20,6 +20,8 @@ class _PersonalScreenState extends State<PersonalScreen> {
 
   DateTime _birthdate = DateTime.now();
 
+  late Persona _persona;
+
   @override
   void dispose() {
     _firstNameController.dispose();
@@ -45,6 +47,26 @@ class _PersonalScreenState extends State<PersonalScreen> {
         });
       }
     });
+  }
+
+  void _save(){
+        if (_firstNameController.text.trim().isEmpty ||
+        _lastNameController.text.trim().isEmpty ||
+        _emailController.text.trim().isEmpty ||
+        _passwordController.text.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Rellena todos los campos")),
+      );
+      return;
+    }
+
+    _persona.firstName = _firstNameController.text.trim();
+    _persona.lastName = _lastNameController.text.trim();
+    _persona.email = _emailController.text.trim();
+    _persona.password = _passwordController.text;
+    _persona.birthdate = _birthdate;
+
+    Navigator.pop(context, _persona);
   }
 
   @override
@@ -105,6 +127,11 @@ class _PersonalScreenState extends State<PersonalScreen> {
               ),
             ),
 
+            const SizedBox(height: 24),
+            ElevatedButton(
+              onPressed: _save,
+              child: const Text('Save and Return'),
+            )
           ],
         )
       )
