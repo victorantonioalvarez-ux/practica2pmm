@@ -17,7 +17,7 @@ class Persona {
     String year = birthdate.year.toString();
     String month = birthdate.month.toString().padLeft(2, "0");
     String day = birthdate.day.toString().padLeft(2, "0");
-    return "$day-$month-$year";
+    return "$month/$day/$year";
   }
 
   String get fullName => "$firstName $lastName";

@@ -45,7 +45,7 @@ class _PersonalScreenState extends State<PersonalScreen> {
         setState(() {
           _birthdate = picked;
           _birthdateController.text =
-              "${picked.year}-${picked.month.toString().padLeft(2, "0")}-${picked.day.toString().padLeft(2, "0")}";
+              "${picked.month.toString().padLeft(2, "0")}/${picked.day.toString().padLeft(2, "0")}/${picked.year}";
         });
       }
     });
@@ -81,7 +81,7 @@ class _PersonalScreenState extends State<PersonalScreen> {
       _passwordController.text = _persona.password;
       _birthdate = _persona.birthdate;
       _birthdateController.text =
-          "${_birthdate.year}-${_birthdate.month.toString().padLeft(2, "0")}-${_birthdate.day.toString().padLeft(2, "0")}";
+          "${_birthdate.month.toString().padLeft(2, "0")}/${_birthdate.day.toString().padLeft(2, "0")}/${_birthdate.year}";
       _loaded = true;
     }
 
