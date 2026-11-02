@@ -10,7 +10,7 @@ class WidgetScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Dismissible & ReorderableListView")),
+      appBar: AppBar(title: const Text("Widgets")),
       body: const Column(
         children: [
           Padding(
